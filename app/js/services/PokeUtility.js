@@ -30,12 +30,23 @@
 
                     pokemon.skillset.push(skills.find((skillsObj) =>
                         skillsObj.id == lvl));
+                    
+                  
                 });
+                
+                pokemon.imgLink = getImgName(pokemon);
+                pokemon.base.SpAtk = pokemon.base['Sp.Atk'];
+                pokemon.base.SpDef = pokemon.base['Sp.Def'];
 
                 return pokemon;
             }
         };
-
+        
+        var getImgName = function(pokemon){
+            
+            return pokemon.id + '' + pokemon.ename;
+            
+        };
 
 
         return {
@@ -45,6 +56,9 @@
             },
             matchSkills: function (pokemon, skills) {
                 return matchPokemonSkills(pokemon, skills);
+            },
+            getImg: function (pokemon){
+                return getImgName(pokemon);
             }
 
         }

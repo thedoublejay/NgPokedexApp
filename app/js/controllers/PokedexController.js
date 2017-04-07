@@ -23,7 +23,7 @@
                             .then((skills) => {
                                 PokeCtrl.pokemonSkills = skills;
                                 PokeCtrl.pokemons = PokeCtrl.pokeWTypes.map( (poke) => PokeUtility.matchSkills(poke, PokeCtrl.pokemonSkills));
-                                console.log(PokeCtrl.pokemons);
+                                PokeCtrl.currentPokemon = PokeCtrl.pokemons[130];
                             });
                     });
             });
