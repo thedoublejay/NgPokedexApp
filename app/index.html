@@ -18,10 +18,11 @@
 
 
 <body ng-cloak>
-
+    
+<ng-include src="'/templates/directives/CommonDirectives.html'"></ng-include>
 <ng-view></ng-view>
 
-
+    
 <script src="/lib/jquery.min.js"></script>
 <script src="/lib/angular/angular.js"></script>
 <script src="/lib/angular/angular-resource.js"></script>
@@ -30,7 +31,8 @@
 <script src="/js/app.js"></script>
 <script src="/js/controllers/PokedexController.js"></script> 
 <script src="/js/services/PokemonData.js"></script>   
-<script src="/js/services/PokeUtility.js"></script>   
+<script src="/js/services/PokeUtility.js"></script> 
+<script src="/js/directives/CommonDirectives.js"></script> 
 <script src="/lib/bootstrap.min.js"></script>
 
 </body>

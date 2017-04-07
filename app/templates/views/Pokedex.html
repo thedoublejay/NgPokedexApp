@@ -1,5 +1,95 @@
-<div class="container">
-    <div class="row">
-        <h1>{{pokedexCtrl.message}}</h1>
+<div class="header">
+    <div class="container">
+        <div class="row pkm-container pkm-head-container" style="
+    text-align: center;">
+            <div class="pkm-head pkm-tile">
+                <h1 style="margin: 0;">Gotta Catch 'Em All</h1>
+            </div>
+        </div>
+        <div class="row pkm-container pkm-oper-container">
+            <div class="pkm-oper pkm-tile">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="pkm-oper-search">
+                            <form>
+                                <div class="form-group form-inline">
+                                    <label for="searchPokemon">Search Pokemon by Name</label>
+                                    <input type="text" class="form-control" id="searchPokemon" placeholder="Bulbasaur">
+                                </div>
+                            </form>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pokescreen">
+    <div class="container">
+        <div class="row pkm-container">
+            <div class="pkm-scrn pkm-tile">
+                <div class="row">
+                    <div class="col-md-5" style="text-align:center;">
+                        <div class="img-cont" style="width:50%; display: inline-block;">
+                             <img class="img-responsive" alt="pokeimage" ng-src="img/img/{{pokedexCtrl.currentPokemon.imgLink}}.png">
+                        </div>                       
+                    </div>                    
+                    <div class="col-md-7">
+                      <div class="pkm-name-box">
+                          <div class="pkm-spr-cont">
+                            <img class="" alt="pokesprite" ng-src="img/spr/{{pokedexCtrl.currentPokemon.id}}MS.png" style="display: inline;">
+                            <div class="pkn-name-cont">
+                                <h3 class="pkn-name">{{pokedexCtrl.currentPokemon.id}} {{pokedexCtrl.currentPokemon.ename}}</h3>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="pkm-name-box" style="margin-top: 30px;">
+                          <div class="pkm-box-content pkm-types">
+                              <div class="auto-inlineblk pokelabel">
+                                  <h4><strong>Type:</strong></h4>
+                              </div>
+                              <poke-type ng-repeat="type in pokedexCtrl.currentPokemon.typeset" 
+                                         type="type"></poke-type>
+                          </div>
+                          <div class="pkm-box-content pkm-base">
+                              <div class="auto-inlineblk pokelabel">
+                                  <h4><strong>Base:</strong></h4>
+                              </div>                              
+                              <div class="">
+                                  <div class="row">
+                                      <div class="col-md-4">
+                                           <h4>Attack: {{pokedexCtrl.currentPokemon.base.Attack}}</h4>
+                                           <h4>HP: {{pokedexCtrl.currentPokemon.base.HP}}</h4>
+                                           <h4>Sp.Atk: {{pokedexCtrl.currentPokemon.base.SpAtk}}</h4>
+                                      </div>
+                                      <div class="col-md-4">
+                                          <h4>Defense: {{pokedexCtrl.currentPokemon.base.Defense}}</h4>
+                                           <h4>Speed: {{pokedexCtrl.currentPokemon.base.Speed}}</h4>
+                                           <h4>Sp.Def: {{pokedexCtrl.currentPokemon.base.SpDef}}</h4>  
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="pkm-box-content pkm-skills">
+                              <div class="auto-inlineblk pokelabel">
+                                  <h4><strong>Skills:</strong></h4>
+                              </div>    
+                              <div class="auto-inlineblk" ng-repeat="skill in pokedexCtrl.currentPokemon.skillset">
+                                  <h4>{{skill.ename}}</h4>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pokelist">
+    <div class="container">
+        <div class="row pkm-container">
+            <div class="pkm-list">
+            </div>
+        </div>
     </div>
 </div>
