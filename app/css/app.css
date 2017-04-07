@@ -1,76 +1,45 @@
-/* app css stylesheet */
-.hoverwell:hover {
-  background-color: #52575c;
-  cursor: pointer;
-}
-select, textarea {
-  color: #52575c;
-}
-
-.well-title {
-  margin-top: 0px;
-}
-.session {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #555;
+    margin: 0;
+    padding: 0;
+    background-color: #E8E8E8;
+    min-height: 1200px;
+    padding-top: 75px;
 }
 
-.votingWidget {
-  height: 64px;
-  padding: 7px;
+/* Text */
+
+h1 {
+    margin: 0 0 1em 0;
+    font-size: 2.8em;
+    font-weight: 700;
 }
 
-.votingButton {
-  padding-left:6px;
-  cursor:pointer;
+h2 {
+    margin: 0 0 .5em 0;
+    font-size: 2.2em;
+    font-weight: 400;
+    line-height: 1.1em;
 }
 
-.blue {
-  color:blue;
+h3 {
+    margin: 0 0 .5em 0;
+    font-size: 1.6em;
+    font-weight: 300;
 }
 
-
-.calendar{
-    border: 1px solid #555;
-    width: 238px;
-}
-.calendar .row {
-    margin-left: 0px;
-}
-.calendar .row div{
-    float:left;
-    padding:2px;
-    width:30px;
-    text-align:center;
-}
-.calendar-nav-left {
-    float:left;
-    width: 20px;
-    padding:2px;
-}
-.calendar-nav-right {
-    float:left;
-    width: 20px;
-    padding:2px;
-    text-align:right;
+h4 {
+    margin: 0 0 1.5em 0;
+    font-size: 1em;
+    font-weight: 300;
 }
 
-.calendar .row .calendar-hdr {
-    padding:2px;
-    float:left;
-    width: 166px;
-    text-align:center;
-}
-.pointer {
-    cursor: pointer;
-}
-.date-picker {
-    position: absolute;
-    top: -7px;
-    left: 209px;
-    background-color: #272b30;
+h5 {
+    margin: 0 0 1.5em 0;
+    font-size: 0.6em;
+    font-weight: 300;
 }
