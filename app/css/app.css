@@ -67,6 +67,7 @@ h5 {
 
 .pkm-head-container {
     min-height: 115px;
+    text-align: center;
 }
 
 .pkm-oper-container {
@@ -117,6 +118,11 @@ label {
 .pkn-name-cont {
     display: inline-block;
     vertical-align: middle;
+}
+
+.img-cont {
+    width:50%; 
+    display: inline-block;
 }
 
 /* Pokemon Types */
@@ -266,5 +272,19 @@ table .poke-row:hover {
 }
 
 .is-selected {
-    background-color: rgb(63, 85, 166);
+    background-color: rgb(97, 96, 94);
+}
+
+.th-sort {
+    cursor: pointer;
+}
+
+/* Loader */
+.loader {
+    text-align: center;
+    padding: 30px;
+}
+
+.sort-icon {
+    padding-left: 5px;
 }
