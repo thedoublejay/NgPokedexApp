@@ -46,10 +46,13 @@
                       <div class="pkm-name-box" style="margin-top: 30px;">
                           <div class="pkm-box-content pkm-types">
                               <div class="auto-inlineblk pokelabel">
-                                  <h4><strong>Type:</strong></h4>
+                                  <label for="poke-type-id"><strong>Type:</strong></label>
                               </div>
-                              <poke-type ng-repeat="type in pokedexCtrl.currentPokemon.typeset" 
+                              <div class="auto-inlineblk" id="poke-type-id">
+                                  <poke-type ng-repeat="type in pokedexCtrl.currentPokemon.typeset" 
                                          type="type"></poke-type>
+                              </div>
+                              
                           </div>
                           <div class="pkm-box-content pkm-base">
                               <div class="auto-inlineblk pokelabel">
@@ -57,26 +60,40 @@
                               </div>                              
                               <div class="">
                                   <div class="row">
-                                      <div class="col-md-4">
-                                           <h4>Attack: {{pokedexCtrl.currentPokemon.base.Attack}}</h4>
-                                           <h4>HP: {{pokedexCtrl.currentPokemon.base.HP}}</h4>
-                                           <h4>Sp.Atk: {{pokedexCtrl.currentPokemon.base.SpAtk}}</h4>
+                                      <div class="col-xs-3 col-md-4">
+                                           <div class="pkm-base-lbl">
+                                            <label for="lbl-att">Attack:</label><h4 class="auto-inlineblk" id="lbl-att">{{pokedexCtrl.currentPokemon.base.Attack}}</h4>
+                                          </div>
+                                          <div class="pkm-base-lbl">
+                                            <label for="lbl-hp">HP:</label><h4 class="auto-inlineblk" id="lbl-hp">{{pokedexCtrl.currentPokemon.base.HP}}</h4>
+                                          </div>
+                                          <div class="pkm-base-lbl">
+                                            <label for="lbl-spatk">Sp.Atk:</label><h4 class="auto-inlineblk" id="lbl-spatk">{{pokedexCtrl.currentPokemon.base.SpAtk}}</h4>
+                                          </div>                                           
                                       </div>
-                                      <div class="col-md-4">
-                                          <h4>Defense: {{pokedexCtrl.currentPokemon.base.Defense}}</h4>
-                                           <h4>Speed: {{pokedexCtrl.currentPokemon.base.Speed}}</h4>
-                                           <h4>Sp.Def: {{pokedexCtrl.currentPokemon.base.SpDef}}</h4>  
+                                      <div class="col-xs-3 col-md-4">
+                                          <div class="pkm-base-lbl">
+                                            <label for="lbl-def">Defense:</label><h4 class="auto-inlineblk" id="lbl-def">{{pokedexCtrl.currentPokemon.base.Defense}}</h4>
+                                          </div>
+                                          <div class="pkm-base-lbl">
+                                            <label for="lbl-spe">Speed:</label><h4 class="auto-inlineblk" id="lbl-spe">{{pokedexCtrl.currentPokemon.base.Speed}}</h4>
+                                          </div>
+                                          <div class="pkm-base-lbl">
+                                            <label for="lbl-spdef">Sp.Def:</label><h4 class="auto-inlineblk" id="lbl-spdef">{{pokedexCtrl.currentPokemon.base.SpDef}}</h4>
+                                          </div>
                                       </div>
                                   </div>
                               </div>
                           </div>
-                          <div class="pkm-box-content pkm-skills">
-                              <div class="auto-inlineblk pokelabel">
-                                  <h4><strong>Skills:</strong></h4>
-                              </div>    
-                              <div class="auto-inlineblk" ng-repeat="skill in pokedexCtrl.currentPokemon.skillset">
-                                  <h4>{{skill.ename}}</h4>
-                              </div>
+                          <div class="pkm-box-content pkm-skills">                            
+                              <div class="pkm-base-lbl">
+                                  <label for="pkm-skills-id"><strong>Skills:</strong></label>
+                                  <div id="pkm-skills-id">
+                                      <div class="auto-inlineblk poke-type-box" style="background-color: rgb(195, 195, 195);" ng-repeat="skill in pokedexCtrl.currentPokemon.skillset track by $index">
+                                        <h4>{{skill.ename}}</h4>
+                                      </div>
+                                  </div> 
+                              </div>                                                           
                           </div>
                       </div>
                     </div>
@@ -87,8 +104,30 @@
 </div>
 <div class="pokelist">
     <div class="container">
-        <div class="row pkm-container">
+        <div class="row pkm-container pkm-tile pkm-table-cont">
             <div class="pkm-list">
+                <table class="table">
+                    <thead>
+                      <tr>
+                          <th style="width: 50px;"></th>
+                          <th>ID</th>
+                          <th>Name</th>
+                          <th>Type</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="poke-row" ng-click="pokedexCtrl.selectPokemon(poke);" ng-repeat="poke in pokedexCtrl.pokemons" ng-class="{'is-selected' : poke.isRowSelected}">
+                          <td><img alt="pokethm" ng-src="img/thm/{{poke.imgLink}}.png" style="width: 40px;"></td>
+                          <td>{{poke.id}}</td>
+                          <td>{{poke.ename}}</td>
+                          <td><div class="auto-inlineblk">
+                                  <poke-type ng-repeat="type in poke.typeset" 
+                                         type="type"></poke-type>
+                              </div>
+                          </td>
+                      </tr>
+                    </tbody>
+  </table>
             </div>
         </div>
     </div>

@@ -34,9 +34,7 @@
                   
                 });
                 
-                pokemon.imgLink = getImgName(pokemon);
-                pokemon.base.SpAtk = pokemon.base['Sp.Atk'];
-                pokemon.base.SpDef = pokemon.base['Sp.Def'];
+                pokemon = pokePropertyAdder(pokemon);
 
                 return pokemon;
             }
@@ -44,8 +42,18 @@
         
         var getImgName = function(pokemon){
             
-            return pokemon.id + '' + pokemon.ename;
+            return pokemon.id + '' + (pokemon.flatName ? pokemon.flatName : pokemon.ename);
             
+        };
+        
+        var pokePropertyAdder = function(pokemon){
+            
+            pokemon.imgLink = getImgName(pokemon);
+            pokemon.base.SpAtk = pokemon.base['Sp.Atk'];
+            pokemon.base.SpDef = pokemon.base['Sp.Def'];
+            pokemon.isRowSelected = false;
+            
+            return pokemon;
         };
 
 
