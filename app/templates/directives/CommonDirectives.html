@@ -1,7 +1,26 @@
 <script type="text/ng-template" id="poketype.html">
- <div class="poke-type-box auto-inlineblk type-{{type.ename}}">
+    <div class="poke-type-box auto-inlineblk type-{{type.ename}}">
         <h4>{{type.ename}}</h4>
- </div>
+    </div>
 </script>
-                             
-                          
+<script type="text/ng-template" id="pokeskills.html">
+    <div class="poke-skills-deets">
+        <h4>Name: {{skill.ename  | ifEmpty}}</h4>
+        <h4>ID: {{skill.id  | ifEmpty}}</h4>
+        <h4>Type: {{skill.skillType  | ifEmpty}}</h4>
+        <h4>Accuracy: {{skill.accuracy | ifEmpty}}</h4>    
+        <h4>PP: {{skill.pp | ifEmpty}}</h4>
+        <h4>Power: {{skill.power | ifEmpty}}</h4>
+    </div>
+</script>
+<script type="text/ng-template" id="pokelabel.html">
+    <div class="pkm-base-lbl">
+        <label for="{{labelId}}">{{labelName}}</label>
+        <h4 class="auto-inlineblk" id="{{labelId}}">{{labelVal | ifEmpty}}</h4>
+    </div>
+</script>
+<script type="text/ng-template" id="sorticon.html">
+    <span class="sort-icon">
+        <i class="fa fa-sort" ng-class="{'fa-sort-desc': (propertyname == prop && reverse), 'fa-sort-asc': (propertyname == prop && !reverse)}" aria-hidden="true"></i>
+    </span>
+</script>

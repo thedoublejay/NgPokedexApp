@@ -6,9 +6,9 @@
 
         var PokeCtrl = this;
 
-        PokeCtrl.message = 'Hello World';
         PokeCtrl.pokemons = [];
-
+        PokeCtrl.isLoading = true;
+        
         PokemonData.getJson('pokedex')
             .$promise
             .then((pokemons) => {
@@ -22,9 +22,10 @@
                             .$promise
                             .then((skills) => {
                                 PokeCtrl.pokemonSkills = skills;
-                                PokeCtrl.pokemons = PokeCtrl.pokeWTypes.map( (poke) => PokeUtility.matchSkills(poke, PokeCtrl.pokemonSkills));
+                                PokeCtrl.pokemons = PokeCtrl.pokeWTypes.map( (poke) => PokeUtility.matchSkills(poke, PokeCtrl.pokemonSkills, PokeCtrl.pokemonTypes));
                                 PokeCtrl.currentPokemon = PokeCtrl.pokemons[0];
                                 PokeCtrl.currentPokemon.isRowSelected = true;
+                                 PokeCtrl.isLoading = false;
                             });
                     });
             });
@@ -34,8 +35,14 @@
              PokeCtrl.currentPokemon.isRowSelected = false;
              PokeCtrl.currentPokemon = poke;
          };
-
-
+        
+        PokeCtrl.propertyName = 'id';
+        PokeCtrl.reverse = false;
+        
+        PokeCtrl.sortBy = function(propertyName) {
+            PokeCtrl.reverse = (PokeCtrl.propertyName === propertyName) ? !PokeCtrl.reverse : false;
+            PokeCtrl.propertyName = propertyName;
+        };
 
     };
 
