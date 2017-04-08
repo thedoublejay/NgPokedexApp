@@ -20,22 +20,55 @@
             }
         };
 
-        var matchPokemonSkills = function (pokemon, skills) {
+        var matchPokemonSkills = function (pokemon, skills, types) {
             if (pokemon) {
                 angular.forEach(pokemon.skills.level_up, function (lvl, key) {
 
                     if (!pokemon.skillset) {
                         pokemon.skillset = [];
                     }
-
+                    
+                    
                     pokemon.skillset.push(skills.find((skillsObj) =>
-                        skillsObj.id == lvl));
+                        {
+                            if(skillsObj.id == lvl)
+                            {
+                                var skillType = types.find((type) => type.cname == skillsObj.type );
+                                if(skillType){
+                                    skillsObj.skillType = skillType.ename;
+                                }
+                                
+                                return true;
+                            }
+                            else
+                                return false;
+
+                        }));
+                    
+                  
                 });
+                
+                pokemon = pokePropertyAdder(pokemon);
 
                 return pokemon;
             }
         };
-
+        
+        var getImgName = function(pokemon){
+            
+            return pokemon.id + '' + (pokemon.flatName ? pokemon.flatName : pokemon.ename);
+            
+        };
+        
+        var pokePropertyAdder = function(pokemon){
+            
+            pokemon.imgLink = getImgName(pokemon);
+            pokemon.base.SpAtk = pokemon.base['Sp.Atk'];
+            pokemon.base.SpDef = pokemon.base['Sp.Def'];
+            pokemon.isRowSelected = false;
+            
+            return pokemon;
+        };
 
 
         return {
@@ -43,8 +76,11 @@
             matchType: function (pokemon, types) {
                 return matchPokemonType(pokemon, types);
             },
-            matchSkills: function (pokemon, skills) {
-                return matchPokemonSkills(pokemon, skills);
+            matchSkills: function (pokemon, skills, types) {
+                return matchPokemonSkills(pokemon, skills, types);
+            },
+            getImg: function (pokemon){
+                return getImgName(pokemon);
             }
 
         }

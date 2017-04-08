@@ -1,6 +1,6 @@
 (function () {
 
-    var app = angular.module('ngPokemonApp', ['ngResource', 'ngRoute'])
+    var app = angular.module('ngPokemonApp', ['ngResource', 'ngRoute', 'ui.bootstrap'])
         .config(function ($routeProvider, $locationProvider) {
 
             $routeProvider.when('/', {
