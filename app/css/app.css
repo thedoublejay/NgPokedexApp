@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 body {
     font-family: 'Lato', sans-serif;
     font-size: 16px;
@@ -42,6 +43,10 @@ h5 {
     margin: 0 0 1.5em 0;
     font-size: 0.6em;
     font-weight: 300;
+}
+
+h1.poke-title {
+    font-family: 'Press Start 2P', cursive;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -278,6 +283,33 @@ table .poke-row:hover {
 .th-sort {
     cursor: pointer;
 }
+
+.img-thm {
+    width: 40px;
+}
+
+.pkm-pokelist {
+    margin-bottom: 50px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .img-thm {
+        width: 25px;
+    }
+    table .poke-type-box {
+        height: 20px;
+    }
+    .poke-type-box {
+        padding: 3px;
+        border-radius: 5px;
+        margin: 0px 5px 5px 0px;
+        cursor: pointer;
+    }
+    .pkm-pokelist {
+        margin-bottom: 30px;
+    }
+}
+
 
 /* Loader */
 .loader {
