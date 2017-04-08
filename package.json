@@ -2,14 +2,14 @@
   "name": "PokedexApp",
   "version": "1.0.0",
   "description": "This project is to showcase my AngularJS skills.",
-  "main": "index.js",
+  "main": "scripts/web-server.js",
   "dependencies": {
     "body-parser": "1.17.1",
     "express": "4.15.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node scripts/web-server.js"
   },
   "author": "",
   "license": "ISC"
