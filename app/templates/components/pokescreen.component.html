@@ -1,0 +1,64 @@
+<div class="pkm-screen">
+        <div class="row pkm-container">
+            <div class="pkm-scrn pkm-tile">
+                <div class="loader" ng-show="pokeScreenCtrl.loading">
+                    <img src="img/loader.gif">
+                </div>
+                <div class="row" ng-show="!pokeScreenCtrl.loading">
+                    <div class="col-md-5" style="text-align:center;">
+                        <div class="img-cont">
+                            <img class="img-responsive" alt="pokeimage" ng-src="img/img/{{pokeScreenCtrl.current.imgLink}}.png">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="pkm-name-box">
+                            <div class="pkm-spr-cont">
+                                <img class="" alt="pokesprite" ng-src="img/spr/{{pokeScreenCtrl.current.id}}MS.png" style="display: inline;">
+                                <div class="pkn-name-cont">
+                                    <h3 class="pkn-name">{{pokeScreenCtrl.current.id}} {{pokeScreenCtrl.current.ename}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pkm-name-box" style="margin-top: 30px;">
+                            <div class="pkm-box-content pkm-types">
+                                <div class="auto-inlineblk pokelabel">
+                                    <label for="poke-type-id"><strong>Type:</strong></label>
+                                </div>
+                                <div class="auto-inlineblk" id="poke-type-id">
+                                    <poke-type ng-repeat="type in pokeScreenCtrl.current.typeset" type="type"></poke-type>
+                                </div>
+
+                            </div>
+                            <div class="pkm-box-content pkm-base">
+                                <div class="auto-inlineblk pokelabel">
+                                    <h4><strong>Base:</strong></h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3 col-md-4">
+                                        <poke-label labelId="lbl-att" labelName="Attack:" labelVal="{{pokeScreenCtrl.current.base.Attack}}"></poke-label>
+                                         <poke-label labelId="lbl-hp" labelName="HP:" labelVal="{{pokeScreenCtrl.current.base.HP}}"></poke-label>
+                                        <poke-label labelId="lbl-spatk" labelName="Sp.Atk:" labelVal="{{pokeScreenCtrl.current.base.SpAtk}}"></poke-label>
+                                    </div>
+                                    <div class="col-xs-3 col-md-4">
+                                        <poke-label labelId="lbl-def" labelName="Defense:" labelVal="{{pokeScreenCtrl.current.base.Defense}}"></poke-label>
+                                        <poke-label labelId="lbl-speed" labelName="Speed:" labelVal="{{pokeScreenCtrl.current.base.Speed}}"></poke-label>
+                                        <poke-label labelId="lbl-SpDef" labelName="Sp.Def:" labelVal="{{pokeScreenCtrl.current.base.SpDef}}"></poke-label>                                            
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pkm-box-content pkm-skills">
+                                <div class="pkm-base-lbl">
+                                    <label for="pkm-skills-id"><strong>Skills:</strong></label>
+                                    <div id="pkm-skills-id">
+                                        <div uib-tooltip-template="'pokeskills.html'" class="auto-inlineblk poke-type-box" style="background-color: rgb(195, 195, 195);" ng-repeat="skill in pokeScreenCtrl.current.skillset track by $index">
+                                            <h4>{{skill.ename}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
