@@ -23,10 +23,17 @@
                             .then((skills) => {
                                 PokeCtrl.pokemonSkills = skills;
                                 PokeCtrl.pokemons = PokeCtrl.pokeWTypes.map( (poke) => PokeUtility.matchSkills(poke, PokeCtrl.pokemonSkills));
-                                PokeCtrl.currentPokemon = PokeCtrl.pokemons[130];
+                                PokeCtrl.currentPokemon = PokeCtrl.pokemons[0];
+                                PokeCtrl.currentPokemon.isRowSelected = true;
                             });
                     });
             });
+        
+         PokeCtrl.selectPokemon = function(poke){
+             poke.isRowSelected = true;
+             PokeCtrl.currentPokemon.isRowSelected = false;
+             PokeCtrl.currentPokemon = poke;
+         };
 
 
 
