@@ -66,6 +66,7 @@
             pokemon.base.SpAtk = pokemon.base['Sp.Atk'];
             pokemon.base.SpDef = pokemon.base['Sp.Def'];
             pokemon.isRowSelected = false;
+            pokemon.firstType = pokemon.typeset[0] ? pokemon.typeset[0].ename : '';
             
             return pokemon;
         };
