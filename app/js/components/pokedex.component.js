@@ -6,12 +6,36 @@
 
         var pokedexCtrl = this;
 
+        pokedexCtrl.getFilters = function () {
+
+            PokeUtility.getFilters(pokedexCtrl.pokes, pokedexCtrl.pokemonTypes)
+                .then((result) => {
+                    console.log(result);
+                    pokedexCtrl.pokeNames = result.pokeNames;
+                    pokedexCtrl.filterNames = result.filterNames;
+                    pokedexCtrl.pokeIds = result.pokeIds;
+                    pokedexCtrl.filterIds = result.filterIds;
+                    pokedexCtrl.filterTypes = result.filterTypes;
+                    pokedexCtrl.pokeTypes = result.pokeTypes;
+
+                });
+        };
+
+
+
         pokedexCtrl.$onInit = function () {
 
             pokedexCtrl.pokemons = [];
-            pokedexCtrl.isLoading = true;           
+            pokedexCtrl.isLoading = true;
             pokedexCtrl.currentPokemon = {};
-                
+            pokedexCtrl.pokeNames = [];
+            pokedexCtrl.pokeIds = [];
+            pokedexCtrl.pokeTypes = [];
+
+            pokedexCtrl.filterNames = [];
+            pokedexCtrl.filterIds = [];
+            pokedexCtrl.filterTypes = [];
+
             PokemonData.getJson('pokedex')
                 .$promise
                 .then((pokemons) => {
@@ -20,6 +44,8 @@
                         .$promise
                         .then((types) => {
                             pokedexCtrl.pokemonTypes = types;
+                            pokedexCtrl.getFilters();
+
                             pokedexCtrl.pokeWTypes = pokedexCtrl.pokes.map((poke) => PokeUtility.matchType(poke, pokedexCtrl.pokemonTypes));
                             PokemonData.getJson('skills')
                                 .$promise
@@ -31,10 +57,12 @@
                                     pokedexCtrl.isLoading = false;
                                 });
                         });
-                    });
-            
+                });
+
 
         };
+
+
 
     };
 
@@ -43,6 +71,6 @@
         controllerAs: 'pokedexCtrl',
         controller: ['PokemonData', 'PokeUtility', PokedexController]
     });
-    
+
 
 }());
