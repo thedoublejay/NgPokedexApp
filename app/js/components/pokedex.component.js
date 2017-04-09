@@ -10,7 +10,6 @@
 
             PokeUtility.getFilters(pokedexCtrl.pokes, pokedexCtrl.pokemonTypes)
                 .then((result) => {
-                    console.log(result);
                     pokedexCtrl.pokeNames = result.pokeNames;
                     pokedexCtrl.filterNames = result.filterNames;
                     pokedexCtrl.pokeIds = result.pokeIds;
