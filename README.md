@@ -11,7 +11,7 @@ To run the Application:
 
 1.) You must have NodeJS installed on your computer. 
 
-You can download it here: [NodeJS](https://nodejs.org/dist/v7.8.0/node-v7.8.0-x64.msi)
+    You can download it here: [NodeJS](https://nodejs.org/dist/v7.8.0/node-v7.8.0-x64.msi)
 
 2.) Once NodeJS is installed, Go to the project directory. Then, click `server.bat` (For Windows) to run the server.
 
