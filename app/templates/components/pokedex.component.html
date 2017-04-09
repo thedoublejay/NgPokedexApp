@@ -1,11 +1,11 @@
-<div class="container">
-    <div class="pkm-header">
-        <div class="row pkm-container pkm-head-container">
-            <div class="pkm-head pkm-tile">
-                <h1 class="poke-title" style="margin: 0;">Gotta Catch 'Em All</h1>
-            </div>
-        </div>
-    </div>
-    <poke-screen current="pokedexCtrl.currentPokemon" loading="pokedexCtrl.isLoading"></poke-screen>
-    <poke-list current="pokedexCtrl.currentPokemon" loading="pokedexCtrl.isLoading" pokemons="pokedexCtrl.pokemons"></poke-list>
-</div>
+<section class="container">
+    <header>
+        <hgroup class="row pkm-container pkm-head-container pkm-tile">            
+            <h1 class="poke-title">Gotta Catch 'Em All</h1>            
+        </hgroup>
+    </header>
+    <main>
+        <poke-screen current="pokedexCtrl.currentPokemon" loading="pokedexCtrl.isLoading"></poke-screen>
+        <poke-list current="pokedexCtrl.currentPokemon" loading="pokedexCtrl.isLoading" pokemons="pokedexCtrl.pokemons" poke-names="pokedexCtrl.pokeNames" filter-names="pokedexCtrl.filterNames" poke-ids="pokedexCtrl.pokeIds" filter-ids="pokedexCtrl.filterIds" poke-types="pokedexCtrl.pokeTypes" filter-types="pokedexCtrl.filterTypes"></poke-list>
+    </main>
+</section>

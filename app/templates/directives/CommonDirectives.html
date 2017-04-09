@@ -24,3 +24,21 @@
         <i class="fa fa-sort" ng-class="{'fa-sort-desc': (propertyname == prop && reverse), 'fa-sort-asc': (propertyname == prop && !reverse)}" aria-hidden="true"></i>
     </span>
 </script>
+<script type="text/ng-template" id="loader.html">
+    <div class="loader">
+        <img src="img/loader.gif">
+    </div>
+</script>
+<script type="text/ng-template" id="btnfilter.html">
+    <div class="btn-area btn-filter">
+          <button type="button" class="btn btn-default" ng-click="clickFilter();" >
+           <i class="fa fa-filter" aria-hidden="true" style="padding-right: 3px;"></i> 
+              {{btnname}}
+          </button>
+          <div class="btn-filter-ddown" ng-show="showFilter" ng-mouseleave="clickFilter();">            
+            <div class="btn-filter-val checkbox" ng-repeat="val in viewList">
+                <label><input class="val-cb" type="checkbox" ng-model="val.bool" ng-click="selectFilter(val.val, val.bool, filterBy);">{{val.val}}</label>
+            </div> 
+          </div>
+    </div>
+</script>

@@ -1,59 +1,59 @@
-<div class="pkm-pokelist">
-        <div class="row pkm-container pkm-oper-container">
-            <div class="pkm-oper pkm-tile">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="pkm-oper-search">
-                            <form>
-                                <div class="form-group form-inline">
-                                    <label for="searchPokemon">Search Pokemon by Name</label>
-                                    <input type="text" ng-model="search.ename" class="form-control" id="searchPokemon" placeholder="Bulbasaur">
-                                </div>
-                            </form>
-                        </div>
+<section class="pkm-pokelist">
+    <section class="row pkm-container pkm-oper-container pkm-tile">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="pkm-oper-search">
+                <form>
+                    <div class="form-group form-inline">
+                        <label for="searchPokemon">Search Pokemon by Name</label>
+                        <input type="text" ng-model="search.ename" class="form-control" id="searchPokemon" placeholder="Bulbasaur">
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-        <div class="row pkm-container pkm-tile pkm-table-cont">
-            <div class="loader" ng-show="pokeListCtrl.loading">
-                <img src="img/loader.gif">
-            </div>
-            <div class="pkm-list" ng-show="!pokeListCtrl.loading">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th class="th-sort" ng-click="pokeListCtrl.sortBy('id')">
-                                ID
-                                <sort-icon propertyname="pokeListCtrl.propertyName"
-                                           prop="id" reverse="pokeListCtrl.reverse"></sort-icon>  
-                            </th>
-                            <th class="th-sort" ng-click="pokeListCtrl.sortBy('ename')">
-                                Name
-                                <sort-icon propertyname="pokeListCtrl.propertyName"
-                                           prop="ename" reverse="pokeListCtrl.reverse"></sort-icon>  
-                            </th>
-                            <th class="th-sort" ng-click="pokeListCtrl.sortBy('firstType')">
-                                Type
-                                <sort-icon propertyname="pokeListCtrl.propertyName"
-                                           prop="firstType" reverse="pokeListCtrl.reverse"></sort-icon>  
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="poke-row" ng-click="pokeListCtrl.selectPokemon(poke);" ng-repeat="poke in pokeListCtrl.pokemons | orderBy:pokeListCtrl.propertyName:pokeListCtrl.reverse | filter : search:strict" ng-class="{'is-selected' : poke.isRowSelected}">
-                            <td><img class="img-thm" alt="pokethm" ng-src="img/thm/{{poke.imgLink}}.png"></td>
-                            <td>{{poke.id}}</td>
-                            <td>{{poke.ename}}</td>
-                            <td>
-                                <div class="auto-inlineblk">
-                                    <poke-type ng-repeat="type in poke.typeset" type="type"></poke-type>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="col-md-6 col-sm-6 col-xs-12 pkm-oper-cont">
+            <div class="pkm-oper-filters">               
+                <poke-filter btnname="Name" filter-names="pokeListCtrl.filterNames" view-list="pokeListCtrl.pokeNames" filter-by="ename" ></poke-filter>
+                <poke-filter btnname="Id" filter-ids="pokeListCtrl.filterIds" view-list="pokeListCtrl.pokeIds" filter-by="id" ></poke-filter> 
+                <poke-filter btnname="Type" filter-types="pokeListCtrl.filterTypes" view-list="pokeListCtrl.pokeTypes" filter-by="type" ></poke-filter> 
             </div>
         </div>
-    </div>
+    </section>
+    <section class="row pkm-container pkm-tile pkm-table-cont">
+        <loader ng-show="pokeListCtrl.loading"></loader>
+        <div class="pkm-list" ng-show="!pokeListCtrl.loading">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="hidden-xs"></th>
+                        <th></th>
+                        <th class="th-sort" ng-click="pokeListCtrl.sortBy('id')">
+                            ID
+                            <sort-icon propertyname="pokeListCtrl.propertyName" prop="id" reverse="pokeListCtrl.reverse"></sort-icon>
+                        </th>
+                        <th class="th-sort" ng-click="pokeListCtrl.sortBy('ename')">
+                            Name
+                            <sort-icon propertyname="pokeListCtrl.propertyName" prop="ename" reverse="pokeListCtrl.reverse"></sort-icon>
+                        </th>
+                        <th class="th-sort" ng-click="pokeListCtrl.sortBy('firstType')">
+                            Type
+                            <sort-icon propertyname="pokeListCtrl.propertyName" prop="firstType" reverse="pokeListCtrl.reverse"></sort-icon>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="poke-row" ng-click="pokeListCtrl.selectPokemon(poke);" ng-repeat="poke in pokeListCtrl.pokemons | orderBy:pokeListCtrl.propertyName:pokeListCtrl.reverse | selectedNameFilter:pokeListCtrl.filterNames | selectedIdFilter:pokeListCtrl.filterIds | selectedTypeFilter:pokeListCtrl.filterTypes | filter : search:strict" ng-class="{'is-selected' : poke.isRowSelected}">
+                        <td class="col-md-1 hidden-xs"></td>
+                        <td class="col-xs-1 col-md-2"><img class="img-thm" alt="pokethm" ng-src="img/thm/{{poke.imgLink}}.png"></td>
+                        <td class="col-xs-2 col-md-1">{{poke.id}}</td>
+                        <td class="col-xs-4 col-md-3">{{poke.ename}}</td>
+                        <td class="col-xs-5 col-md-5">
+                            <div class="auto-inlineblk">
+                                <poke-type ng-repeat="type in poke.typeset" type="type"></poke-type>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
