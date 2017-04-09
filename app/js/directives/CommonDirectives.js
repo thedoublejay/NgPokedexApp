@@ -42,6 +42,15 @@
        
    });
     
+  app.directive('loader', function(){
+       
+       return {
+           restrict: 'E',
+           templateUrl: 'loader.html'
+       };
+       
+   });
+    
    app.filter('ifEmpty', function(){
        
        return function(obj){
