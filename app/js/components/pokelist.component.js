@@ -9,13 +9,15 @@
         pokeListCtrl.$onInit = function(){          
             pokeListCtrl.propertyName = 'id';
             pokeListCtrl.reverse = false;  
-            console.log(pokeListCtrl);
         };
         
         pokeListCtrl.selectPokemon = function (poke) {
-            poke.isRowSelected = true;
-            pokeListCtrl.current.isRowSelected = false;
-            pokeListCtrl.current = poke;
+            if(poke.id != pokeListCtrl.current.id){
+                poke.isRowSelected = true;            
+                pokeListCtrl.current.isRowSelected = false;
+                pokeListCtrl.current = poke;                
+            }
+            
         };
         
          pokeListCtrl.sortBy = function (propertyName) {
