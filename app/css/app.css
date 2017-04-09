@@ -78,6 +78,7 @@ h1.poke-title {
 
 .pkm-oper-container {
    min-height: 40px;
+   padding: 15px;
 }
 
 .pkm-tile {
@@ -86,10 +87,6 @@ h1.poke-title {
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12), 0 1px 8px 0 rgba(0,0,0,.2);
-}
-
-.pkm-oper{
-    padding: 15px;
 }
 
 label {
@@ -325,3 +322,75 @@ table .poke-row:hover {
 .center-text {
     text-align:center;
 }
+
+/* Filter */
+.btn-area.btn-filter {
+    display: inline-block;
+    padding-right: 30px;
+}
+
+.btn-filter-ddown {
+    background-color: white;
+    max-height: 170px;
+    width: 50%;
+    overflow-y: auto;
+    display: block;
+    border-radius: 5px;
+    z-index: 999;
+    position: absolute;
+    padding: 10px;
+    color: black;
+    margin-top: 1px;
+}
+
+.btn-filter-val {
+    padding: 5px 0px 5px 0px;
+}
+
+.btn-filter-val:hover {
+    background-color: rgb(71, 183, 237);
+    color: white;
+}
+input.val-cb {
+    top: 8px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .btn-area.btn-filter {
+        display: inline-block;
+        padding-right: 15px;
+    }
+    #searchPokemon {
+        width: 100%;
+    }
+    input.val-cb {
+        top: 4px;
+    }
+    .pkm-oper-cont {
+        margin-top: 15px;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 360px) {
+    .btn-area.btn-filter {
+        display: block;
+        margin-top: 10px;
+    }   
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    #searchPokemon {
+        width: 100px;
+    }
+    .btn-area.btn-filter {
+        display: inline-block;
+        padding-right: 25px;
+    }
+}
+
+@media only screen and (min-device-width : 1023px) and (max-device-width : 1024px) {
+    #searchPokemon {
+        width: 50%;
+    }
+}
+    

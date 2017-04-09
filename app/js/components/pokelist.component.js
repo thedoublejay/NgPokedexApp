@@ -8,7 +8,8 @@
         
         pokeListCtrl.$onInit = function(){          
             pokeListCtrl.propertyName = 'id';
-            pokeListCtrl.reverse = false;            
+            pokeListCtrl.reverse = false;  
+            console.log(pokeListCtrl);
         };
         
         pokeListCtrl.selectPokemon = function (poke) {
@@ -21,7 +22,7 @@
             pokeListCtrl.reverse = (pokeListCtrl.propertyName === propertyName) ? !pokeListCtrl.reverse : false;
             pokeListCtrl.propertyName = propertyName;
         };
-                
+        
     };
     
     app.component('pokeList', {
@@ -32,7 +33,14 @@
         bindings: {
             current : '=',
             loading : '<',
-            pokemons: '<'
+            pokemons: '<',
+            filterNames: '=',
+            pokeNames : '=',
+            filterIds: '=',            
+            pokeIds: '=',
+            filterTypes : '=',
+            pokeTypes : '='
+            
         }
         
     });
