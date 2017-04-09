@@ -13,8 +13,8 @@ To run the application:
 
 2.) Once NodeJS is installed, you have two options:
 
-    a.) You can download the zip file via https://github.com/thedoublejay/NgPokedexApp/archive/master.zip and extract it.
-    b.) Or you can fork the repository.
+    a.) You can download the zip file via https://github.com/thedoublejay/NgPokedexApp/archive/master.zip or by clicking the Clone or download button > Download ZIP. Once available, extract it to your machine.
+    b.) Or you can fork the repository and clone it to your machine.
 
 3.) Once the project directory is available, locate and click `server.bat` (For Windows) in the root directory to run the server. It will open a command prompt that will be used to run the server. 
 
