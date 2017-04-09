@@ -5,6 +5,7 @@ This project is a simple Pokedex App made primarily by AngularJS and NodeJS.
 ### Running the application
 
 To run the Application:
+
 1.) You must have NodeJS installed on your computer. You can download it here:
 NodeJS - https://nodejs.org/dist/v7.8.0/node-v7.8.0-x64.msi
 
