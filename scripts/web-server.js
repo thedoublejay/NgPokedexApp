@@ -17,6 +17,5 @@ app.get('/data/:fname', pokemons.get);
 app.get('*', function(req, res) { res.sendFile(rootPath + '/app/index.html'); });
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-  console.log('Listening on port ' + 8000 + '...');
+  console.log('The server for NgPokedexApp is now running. You may view it by typing localhost:8000 in your browser.');
 });
