@@ -2,7 +2,7 @@
 
     var app = angular.module('ngPokemonApp');
 
-    var PokedexController = function (PokemonData, PokeUtility) {
+    var PokedexController = function (PokemonData, PokeUtility, $q) {
 
         var pokedexCtrl = this;
 
@@ -20,6 +20,27 @@
                 });
         };
 
+        pokedexCtrl.getData = function(){
+
+            var pokemonsPromise = PokemonData.getJson('pokedex').$promise;
+            var pokemonTypesPromise = PokemonData.getJson('types').$promise;
+            var pokemonSkillsPromise = PokemonData.getJson('skills').$promise;
+
+            $q.all([pokemonsPromise, pokemonTypesPromise, pokemonSkillsPromise])
+              .then( (result) => {
+                      pokedexCtrl.pokes = result[0];  
+                      pokedexCtrl.pokemonTypes = result[1];
+                      pokedexCtrl.getFilters();
+                      pokedexCtrl.pokeWTypes = pokedexCtrl.pokes.map((poke) => PokeUtility.matchType(poke, pokedexCtrl.pokemonTypes));
+                      pokedexCtrl.pokemonSkills = result[2]; 
+                      pokedexCtrl.pokemons = pokedexCtrl.pokeWTypes.map((poke) => PokeUtility.matchSkills(poke, pokedexCtrl.pokemonSkills, pokedexCtrl.pokemonTypes));
+                      pokedexCtrl.currentPokemon = pokedexCtrl.pokemons[0];
+                      pokedexCtrl.currentPokemon.isRowSelected = true;
+                      pokedexCtrl.isLoading = false; 
+                   });
+
+        };
+
 
 
         pokedexCtrl.$onInit = function () {
@@ -34,30 +55,8 @@
             pokedexCtrl.filterNames = [];
             pokedexCtrl.filterIds = [];
             pokedexCtrl.filterTypes = [];
-
-            PokemonData.getJson('pokedex')
-                .$promise
-                .then((pokemons) => {
-                    pokedexCtrl.pokes = pokemons;
-                    PokemonData.getJson('types')
-                        .$promise
-                        .then((types) => {
-                            pokedexCtrl.pokemonTypes = types;
-                            pokedexCtrl.getFilters();
-
-                            pokedexCtrl.pokeWTypes = pokedexCtrl.pokes.map((poke) => PokeUtility.matchType(poke, pokedexCtrl.pokemonTypes));
-                            PokemonData.getJson('skills')
-                                .$promise
-                                .then((skills) => {
-                                    pokedexCtrl.pokemonSkills = skills;
-                                    pokedexCtrl.pokemons = pokedexCtrl.pokeWTypes.map((poke) => PokeUtility.matchSkills(poke, pokedexCtrl.pokemonSkills, pokedexCtrl.pokemonTypes));
-                                    pokedexCtrl.currentPokemon = pokedexCtrl.pokemons[0];
-                                    pokedexCtrl.currentPokemon.isRowSelected = true;
-                                    pokedexCtrl.isLoading = false;
-                                });
-                        });
-                });
-
+           
+            pokedexCtrl.getData();
 
         };
 
@@ -68,7 +67,7 @@
     app.component('pokedex', {
         templateUrl: '/templates/components/pokedex.component.html',
         controllerAs: 'pokedexCtrl',
-        controller: ['PokemonData', 'PokeUtility', PokedexController]
+        controller: ['PokemonData', 'PokeUtility', '$q', PokedexController]
     });
 
 
